@@ -213,7 +213,7 @@ public class SemiSpace implements ISemiSpace {
         if (entry == null) {
             return null;
         }
-    	log.logDebug( "WRITE: "+entry.getJSON());
+//    	log.logDebug( "WRITE: "+entry.getJSON());
 
 //System.out.println("SemiSpace.write-1 "+entry);
         WrappedInternalWriter write = new WrappedInternalWriter(entry, leaseTimeMs);
@@ -305,14 +305,14 @@ public class SemiSpace implements ISemiSpace {
 
     @Override
     public ISemiSpaceTuple read(ISemiSpaceTuple tmpl, long timeout) {
-    	log.logDebug( "READ-: "+tmpl.getJSON());
+//    	log.logDebug( "READ-: "+tmpl.getJSON());
         ISemiSpaceTuple found = null;
         if (tmpl != null) {
             found = findOrWaitLeaseForTemplate(getPropertiesForObject(tmpl), timeout, false);
         }
         if (found != null) {
  //       	System.out.println("READ Found "+found.getId());
-           	log.logDebug( "READ+: "+found.getJSON());
+           	log.logDebug( "READ+: "+found);
         } else {
  //       	System.out.println("READ Found "+found);
            	log.logDebug( "READ+: empty");
@@ -331,7 +331,7 @@ public class SemiSpace implements ISemiSpace {
         final long until = admin.calculateTime() + timeout;
         long systime = admin.calculateTime();
         String tag = (String)templateSet.get("tag");
-        log.logDebug("findOrWaitLeaseForTemplate "+templateSet+" "+timeout);
+//        log.logDebug("findOrWaitLeaseForTemplate "+templateSet+" "+timeout);
         ISemiSpaceTuple found = null;
         long subtract = 0;
         do {
@@ -379,7 +379,7 @@ public class SemiSpace implements ISemiSpace {
         if ( tag == null ) {
             throw new SemiSpaceObjectException("Did not expect classname to be null");
         }
-        log.logDebug( "findLeaseForTemplate- "+templateSet);
+//        log.logDebug( "findLeaseForTemplate- "+templateSet);
         TupleCollectionById next = elements.next(tag);
         if ( next != null ) {
             Iterator<ISemiSpaceTuple> it = next.iterator();
@@ -407,7 +407,7 @@ public class SemiSpace implements ISemiSpace {
             }
         }
         boolean needToRetake = false;
-        log.logDebug("findLeaseForTemplate found "+found);
+//        log.logDebug("findLeaseForTemplate found "+found);
         if (found != null) {
             if (isToTakeTheLease && !cancelElement(Long.valueOf(found.getId()), isToTakeTheLease, found.getTag())) {
                 log.logDebug("Element with id " + found.getId() + " ceased to exist during take. "
@@ -478,7 +478,7 @@ public class SemiSpace implements ISemiSpace {
         // accumulate agentName in lists
         String agentName = (String)templateSubSet.get(ITupleFields.AGENT_NAME);
         Set<Entry<String, Object>> templateEntrySet = templateSubSet.entrySet();
-        log.logDebug("HASSUBSET-1 "+templateEntrySet+" "+agentName+" "+isToTakeTheLease);
+//        log.logDebug("HASSUBSET-1 "+templateEntrySet+" "+agentName+" "+isToTakeTheLease);
     	boolean result = false;
         if (!isToTakeTheLease && agentName != null) {
         	//has this agent seen this tuple before?
@@ -492,7 +492,7 @@ public class SemiSpace implements ISemiSpace {
         	}
         	
         }
-        log.logDebug("HASSUBSET-3 "+result);
+//        log.logDebug("HASSUBSET-3 "+result);
         //note that "true" means this agent has seen this tuple before
         //so just leave with a "not found" result
         if (result)
@@ -504,7 +504,7 @@ public class SemiSpace implements ISemiSpace {
         //MUST PUT IT BACK IN THE TEMPLATE since the template is used in iterations
         if (agentName != null)
         	templateSubSet.put(ITupleFields.AGENT_NAME, agentName);
-        log.logDebug("HASSUBSET-4 "+result+" "+containerEntrySet+" "+templateEntrySet);
+//        log.logDebug("HASSUBSET-4 "+result+" "+containerEntrySet+" "+templateEntrySet);
         if (result) {
         	//We found this tuple, so tell it that "agentName" was here!
         	//THIS IS COMPLEX!
@@ -524,10 +524,10 @@ public class SemiSpace implements ISemiSpace {
         ISemiSpaceTuple found = null;
         if (tmpl != null) {
             found = findOrWaitLeaseForTemplate(getPropertiesForObject(tmpl), timeout, true);
-        	log.logDebug( "TAKE-: "+tmpl.getJSON());
+//        	log.logDebug( "TAKE-: "+tmpl.getJSON());
         }
         if (found != null)
-        	log.logDebug( "TAKE+: "+found.getJSON());
+        	log.logDebug( "TAKE+: "+found);
         return found; //xmlToObject(found);
     }
 
@@ -859,7 +859,7 @@ public class SemiSpace implements ISemiSpace {
                     Collections.sort(ids);
                     moreInfo = "Ids: "+ids;
                 }
-                log.logDebug("Testing group "+group+" gave "+afterSize+" element(s) to evict. "+moreInfo);
+ //               log.logDebug("Testing group "+group+" gave "+afterSize+" element(s) to evict. "+moreInfo);
             }
         }
         for (ISemiSpaceTuple evict : beforeEvict) {
