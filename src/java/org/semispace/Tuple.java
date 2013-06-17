@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import org.semispace.api.ISemiSpaceTuple;
 import org.semispace.api.ITupleFields;
 
-import net.sf.json.JSONObject;
+import org.json.simple.JSONObject;
 /**
  * Tuple of an entry written into the space.
  * @park modifications
@@ -102,7 +102,7 @@ public class Tuple implements ISemiSpaceTuple {
     public String getJSON() {
     	if (this.json == null) {
     		synchronized(searchMap) {
-	    		JSONObject jobj= JSONObject.fromObject(this.searchMap);
+	    		JSONObject jobj= new JSONObject(this.searchMap);
 	    		json = jobj.toString();
     		}
     	}

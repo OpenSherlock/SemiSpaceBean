@@ -23,6 +23,7 @@ public interface ITupleTags {
 	
 	public static final String
 		NEW_SOLR_DOC			= "NewSolrDoc",
-		UPDATE_SOLR_DOC			= "UpdateSolrDoc";
+		UPDATE_SOLR_DOC			= "UpdateSolrDoc",
+		HARVEST_SOLR_DOC		= "HarvestSolrDoc";
 
 }

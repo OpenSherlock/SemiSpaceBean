@@ -26,7 +26,7 @@
 
 package org.semispace;
 
-import net.sf.json.JSONObject;
+import org.json.simple.JSONObject;
 
 import org.semispace.admin.SemiSpaceAdmin;
 import org.semispace.api.ISemiSpace;
@@ -631,7 +631,7 @@ public class SemiSpace implements ISemiSpace {
 
 		@Override
 		public String getJSON() {
-			JSONObject jobj = JSONObject.fromObject(this.cachedSet);
+			JSONObject jobj = new JSONObject(this.cachedSet);
 			return jobj.toString();
 		}
 
