@@ -73,7 +73,7 @@ import java.util.concurrent.RejectedExecutionException;
  * the main class from which the SemiSpace interface is obtained.
  */
 public class SemiSpace implements ISemiSpace {
-	private LoggingPlatform log = LoggingPlatform.getInstance();
+	private LoggingPlatform log = LoggingPlatform.getLiveInstance();
     private static final String ADMIN_GROUP_IS_FLAGGED = "adminGroupIsFlagged";
 
     public static final long ONE_DAY = 86400 * 1000;

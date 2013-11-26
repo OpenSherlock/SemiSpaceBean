@@ -40,7 +40,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * </p>Collects {@link ISemiSpaceTuple} objects by <code>id</code></p>
  */
 public class TupleCollectionById implements Iterable<ISemiSpaceTuple>{
-	private LoggingPlatform log = LoggingPlatform.getInstance();
+	private LoggingPlatform log = LoggingPlatform.getLiveInstance();
     private Map<Long, ISemiSpaceTuple> elements = new ConcurrentHashMap<Long, ISemiSpaceTuple>();
     private boolean waiting;
     

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * periodically check that a master is present.
  */
 public class ScheduledSemiSpaceHarvester implements Runnable {
-	private LoggingPlatform log = LoggingPlatform.getInstance();
+	private LoggingPlatform log = LoggingPlatform.getLiveInstance();
     private SemiSpaceAdmin semiSpaceAdmin;
     private long lastCheck;
     /** At least a 2 minute wait between checking for presence of master */

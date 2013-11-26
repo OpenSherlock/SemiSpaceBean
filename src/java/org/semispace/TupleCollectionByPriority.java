@@ -31,7 +31,7 @@ import org.topicquests.util.LoggingPlatform;
  * <p>Tuples with tag = "task" are special tuples; they belong here</p>
  */
 public class TupleCollectionByPriority implements Iterable<ISemiSpaceTuple> {
-	private LoggingPlatform log = LoggingPlatform.getInstance();
+	private LoggingPlatform log = LoggingPlatform.getLiveInstance();
 	/** Long is priority */
     private Map<Long, ISemiSpaceTuple> elements = new ConcurrentHashMap<Long, ISemiSpaceTuple>();
     private List<Long> sortedPriorities = new ArrayList<Long>();

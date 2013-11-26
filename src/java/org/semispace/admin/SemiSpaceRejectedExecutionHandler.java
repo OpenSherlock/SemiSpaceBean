@@ -32,7 +32,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import org.topicquests.util.LoggingPlatform;
 
 public class SemiSpaceRejectedExecutionHandler implements RejectedExecutionHandler {
-	private LoggingPlatform log = LoggingPlatform.getInstance();
+	private LoggingPlatform log = LoggingPlatform.getLiveInstance();
 
     private final RejectedExecutionHandler rejectedExecutionHandler;
 

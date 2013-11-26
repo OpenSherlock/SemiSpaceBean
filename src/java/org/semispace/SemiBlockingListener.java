@@ -37,7 +37,7 @@ import java.util.concurrent.TimeUnit;
  * Block until notification or timeout.
  */
 public class SemiBlockingListener implements ISemiEventListener<SemiAvailabilityEvent> {
-	private LoggingPlatform log = LoggingPlatform.getInstance();
+	private LoggingPlatform log = LoggingPlatform.getLiveInstance();
     private transient CountDownLatch latch;
     private transient Boolean beenNotified;
 

@@ -47,7 +47,7 @@ import org.semispace.event.SemiAvailabilityEvent;
 import org.topicquests.util.LoggingPlatform;
 
 public class SemiSpaceAdmin implements ISemiSpaceAdmin {
-	private LoggingPlatform log = LoggingPlatform.getInstance();
+	private LoggingPlatform log = LoggingPlatform.getLiveInstance();
 
     private boolean master;
 
